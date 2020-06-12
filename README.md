@@ -1,14 +1,20 @@
 # testgitcommand
 
-git add .
-git status
-git commit -m "message"
-git push -u origin <branch>
+- git add .
 
-gitk to monitor
-git clone ... 
+- git status
 
-git branch 
-git branch <push new BranchName here>
-git checkout <push your Branch you want to switch>
+- git commit -m "message"
+
+- git push -u origin "branch"
+
+- gitk to monitor
+
+- git clone ... 
+
+- git branch 
+
+- git branch "push new BranchName here"
+
+- git checkout "push your Branch you want to switch"
 
