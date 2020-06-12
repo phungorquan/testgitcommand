@@ -14,7 +14,9 @@
 
 - git branch 
 
+- git branch -a (List all remote branchs)
+
 - git branch "push new BranchName here"
 
-- git checkout "push your Branch you want to switch"
+- git checkout "push your branch you want to switch even remote branchs "
 
