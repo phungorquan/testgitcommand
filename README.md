@@ -1,22 +1,9 @@
 # testgitcommand
 
-- git add .
+from xiu PC
 
-- git status
+subbranch can not see this line
 
-- git commit -m "message"
-
-- git push -u origin "branch"
-
-- gitk to monitor
-
-- git clone ... 
-
-- git branch 
-
-- git branch -a (List all remote branchs)
-
-- git branch "push new BranchName here"
-
-- git checkout "push your branch you want to switch even remote branchs "
-
+xyz_test merge on Win 1st, Now is 3rd
+Because web was 2nd, i edit to test merge only :D
+...
