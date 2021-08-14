@@ -1,0 +1,14 @@
+{
+  "name": "lorace",
+  "version": "1.0.0",
+  "description": "server to transceiver",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xiu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
