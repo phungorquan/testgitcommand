@@ -1,0 +1,35 @@
+<html>
+
+<head>
+<title>LORA</title> <!-- Tên Tab -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <!-- Vietnamese -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../img/Logo_CE.png"><!--  Hiển thị hình cho tab -->
+<link rel="stylesheet" href="../css/dashboard.css">	<!-- include File CSS tự tạo -->
+		
+<style>
+
+/*Giao diện chung cho toàn trang*/
+body {
+  	font-family: Arial, Helvetica, sans-serif;
+  	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+ 	background-size: 100% 100%;
+}
+
+</style>
+</head>
+
+<!-- Giao diện các khối -->
+<body>
+		<h1 id = "displayData"> Data will be display here </h1>
+</body>
+
+<script src ="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src = "/socket.io/socket.io.js"></script>
+
+<!-- Khai báo các file điều khiển -->
+<script src = "/functions/processdata.js"></script>
+
+</html>
