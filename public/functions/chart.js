@@ -108,7 +108,7 @@ function showChart() {
   var recall = function() {
     socket.emit("GET_CHART_DATA",getDate);
   }
-  chartIntervalUpdate = setInterval(recall, 1000);
+  chartIntervalUpdate = setInterval(recall, 2000);
 }
 
 // Hiện thị biểu đồ lịch sử

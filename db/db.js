@@ -64,19 +64,3 @@ exports.queryGetHistory = function (date) {
 	});
 }
 
-// Hàm này sẽ lấy giá trị phút cuối cùng ra so sánh
-exports.queryGetLastMinute = function () {
-	return new Promise (function (resolve, reject) {
-		pool.query("SELECT MINUTE(time) AS time FROM history WHERE id=(SELECT MAX(id) FROM history);", function(err, res, fields) { // Truy vấn
-			if (err){
-				resolve("queryGetLastMinute-ERROR");
-				return;
-			} 
-			if(res.rows.length>0){
-				resolve(res.rows[0].time);
-			}
-			else resolve("EMPTY_DATA");
-		});
-	});
-}
-

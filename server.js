@@ -8,19 +8,20 @@ app.set("views","./views"); // Sử dụng folder views là nơi để chứa gi
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: true}))
 
+const { base64encode, base64decode } = require('nodejs-base64');
+
 // Create server
 var server = require("http").Server(app); // Khởi tạo server HTTP
 var io = require("socket.io")(server); // Khởi tạo socket
 server.listen(process.env.PORT || 3000, () => { // Server sẽ chạy trên port 3000 trong hệ thống mạng
    console.log('listening on *:3000');
 });
+
+// DATATBASE
 // var db = require("./db/db"); // Include file db.js để dùng các function truy xuất db (library tự tạo)
 
+// MQTT
 var mqtt = require('mqtt');
-// npm install mqtt --save
-
-const { base64encode, base64decode } = require('nodejs-base64');
-
 var options = {
     // port: 8883,
     // host: 'mqtt://au1.cloud.thethings.network',
@@ -38,6 +39,8 @@ var client = mqtt.connect('https://au1.cloud.thethings.network:1883', options);
 
 var globalMQTT = 0;
 var canSaveEnergy = true;
+
+
 // SOCKET
 // Hàm để lắng nghe sự kiện từ các CLIENTS
 io.on("connection", function(socket)
@@ -77,6 +80,7 @@ io.on("connection", function(socket)
 });
 
 
+// MQTT
 // function có chức năng subscribe 1 topic nếu đã kết nối thành công đến broker
 client.on('connect', function() {
     console.log('Client A connected')
@@ -98,18 +102,11 @@ client.on('message', function(topic, message) {
     globalMQTT = afterDecodedBase64;
     console.log("Water level: ", afterDecodedBase64);
 
-    var lastMin = 0;
-    async function getLastMinute() {
-      result = await db.queryGetLastMinute(); 
-      if(result != "EMPTY_DATA")
-        lastMin = result;
-
+    async function getDataFromDB() {
       var currentTime = new Date(); // for now
       var currentMin = currentTime.getMinutes();
      if(currentMin % 2 == 0)
      {
-       //if(lastMin != currentMin)
-       //{
           async function saveData() {
             result = await db.querySaveData(globalMQTT); 
             if(result == "querySaveData-ERROR")
@@ -120,12 +117,11 @@ client.on('message', function(topic, message) {
             canSaveEnergy = false;
             saveEnergy(); // Thực thi
           }
-       //}
      }
      else 
       canSaveEnergy = true;
     }  
-    getLastMinute(); // Thực thi
+    getDataFromDB(); // Thực thi
 
 });
 
