@@ -6,8 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <!-- Vietnamese -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="../img/Logo_CE.png"><!--  Hiển thị hình cho tab -->
+<link rel="stylesheet" href="../css/history.css"> <!-- include File CSS tự tạo -->
 <link rel="stylesheet" href="../css/dashboard.css">	<!-- include File CSS tự tạo -->
-		
+
 <style>
 
 /*Giao diện chung cho toàn trang*/
@@ -23,16 +24,28 @@ body {
 
 <!-- Giao diện các khối -->
 <body>
-		<h1 id = "displayData"> Data will be display here </h1>
-		<h1 id = "displayESPData"> Data will from ESP will be displayed here </h1>
-
-		<img id = "anImage" width="80px" height="80px" style="cursor: pointer;" src="../img/Logo_CE.png" onclick="changeText('paramHere')" >
+	<h1 id = "displayESPData" style = "text-align: center;">water sensor</h1>
+	<img id = "chart" width="80px" height="80px" style="cursor: pointer; display:block; margin-left: auto;  margin-right: auto;" onclick="showChart()" src="../img/History.png">
+	<div id="idHistoryChart" class="modal">
+ 		<div class="modal-content animate"  style = "padding: 35px; width: 80%; height: 80%">
+			<div title = "Chọn ngày">
+				<input id = "idDateSelection" class = "myDateSelection" type="date" style = "float: left;">
+				<button id = "idDateSearch" class = "myDateSearchButton" onclick="showHistory()" style = "float: left;">Search</button>
+			</div>
+			<div style = "float:right;">
+				<img id = "closeHistory" width="20px" height="20px" style="cursor: pointer;" onclick="closeChart()" src="../img/close.png">
+			</div>
+      		<div style = "height: 95%; width: 100%;">
+				<canvas id="myChart"></canvas>
+    		</div>
+  		</div>
+	</div>
 </body>
 
 <script src ="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>	
 <script src = "/socket.io/socket.io.js"></script>
-
-<!-- Khai báo các file điều khiển -->
+<script src = "/functions/chart.js"></script>
 <script src = "/functions/processdata.js"></script>
 
 </html>
